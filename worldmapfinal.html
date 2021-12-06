@@ -1,0 +1,289 @@
+<html>
+	<head>
+		<title>World Landmarks</title>
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+		<style type="text/css">
+		
+	html, body { 
+	font-family: 'Press Start 2P', cursive;
+	} 
+	body {background-color: black;}
+
+	header {
+		position: fixed;
+		top: 0; left: 0;
+		height: 120px;
+		width: 100%;
+        padding: 20px;
+		text-align: center;
+		background-color: black;}
+		
+	.titleimg{
+	filter: invert(100%)drop-shadow(5px 5px blue);
+	}
+	
+	.titlearea {
+		position:relative;	
+		height: 120px;
+		width: 100%;
+		}
+	
+	.titlearea img{
+	position: absolute; 
+	top: 50%;
+	margin-top: -37.5px; 
+	height: 75px;
+	left: 50%;	
+	margin-left: -196px; 
+	width: 392px;
+	}
+		
+	#container {
+        width: 1400px;
+		height: 700px;
+        margin: 0px auto;
+        padding: 20px;
+		padding-top: 170px; 
+      }
+      #worldmap {
+	  	cursor: url('airplane2.cur'), auto;
+        width: 960px;
+		height: 600px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: left;
+		background-color: white;
+		border: 4px double black;
+      }
+	  
+	  .mapping {
+	  width: 100%;
+      height: 100%;
+	  
+	  text-align: center;
+	  }
+	.boxes {
+	  display: flex;
+	  flex-direction: column;
+	  border: none;
+	}
+	.boxes > div:first-child {
+	  width: 100%;
+	  height: 600px;
+	}
+	.boxes > div:last-child {
+	  cursor: default;
+	  width: 99%;
+	  text-align: center;
+	  height: 100px;
+	  line-height: 50px;
+	  border: 4px double black;
+	  box-shadow: 3px 3px;
+	}
+	  
+	  area {
+    cursor: url('airplaneg2.cur'), auto;
+    display:block;
+	}
+	  
+	   #content {
+        width: 320px;
+		height: 600px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: right;
+		border: 4px double black;
+		cursor: auto;
+		background-color: white;
+      }
+    footer {
+		cursor: default;
+		position: fixed;
+		bottom: 0; left: 0;
+		height: 90px;
+		width: 100%;
+        padding: 10px;
+		font-size: x-small;
+		color: white;
+		text-align: center;
+		background-color: black;
+      }
+	  
+	.infoarea {
+		padding: 50px 0px;
+		}
+	
+	.loader {
+		  position: fixed;
+		  z-index: 999;
+		  top: 0;
+		  left: 0;
+		  width: 0;
+		  height: 100vh;
+		  transition: width 0s 1.4s ease;
+		}
+		.loader .loader__icon {
+		  position: absolute;
+		  z-index: 1;
+		  top: 50%;
+		  left: 50%;
+		  transform: translateX(-50%) translateY(-50%);
+		  opacity: 0;
+		  transition: opacity 0.5s ease;
+		}
+		.loader .loader__icon svg {
+		  transform-origin: 0 0;
+		}
+		.loader .loader__tile {
+		  position: absolute;
+		  left: 0;
+		  width: 0;
+		  height: 20%;
+		  background-color: yellow;
+		  transition: width 0.7s ease;
+		}
+		.loader .loader__tile:nth-child(0) {
+		  top: calc(-1 * 20%);
+		  transition-delay: -0.2s;
+		}
+		.loader .loader__tile:nth-child(1) {
+		  top: calc(0 * 20%);
+		  transition-delay: 0s;
+		}
+		.loader .loader__tile:nth-child(2) {
+		  top: calc(1 * 20%);
+		  transition-delay: 0.2s;
+		}
+		.loader .loader__tile:nth-child(3) {
+		  top: calc(2 * 20%);
+		  transition-delay: 0.4s;
+		}
+		.loader .loader__tile:nth-child(4) {
+		  top: calc(3 * 20%);
+		  transition-delay: 0.6s;
+		}
+		.loader .loader__tile:nth-child(5) {
+		  top: calc(4 * 20%);
+		  transition-delay: 0.8s;
+		}
+		.loader--active {
+		  width: 100%;
+		  transition-delay: 0s;
+		}
+		.loader--active .loader__icon {
+		  opacity: 1;
+		  transition: opacity 0.5s 1.4s ease;
+		}
+		.loader--active .loader__tile {
+		  width: 100%;
+		}
+		.loader--active .loader__tile:nth-child(0) {
+		  transition-delay: -0.2s;
+		}
+		.loader--active .loader__tile:nth-child(1) {
+		  transition-delay: 0s;
+		}
+		.loader--active .loader__tile:nth-child(2) {
+		  transition-delay: 0.2s;
+		}
+		.loader--active .loader__tile:nth-child(3) {
+		  transition-delay: 0.4s;
+		}
+		.loader--active .loader__tile:nth-child(4) {
+		  transition-delay: 0.6s;
+		}
+		.loader--active .loader__tile:nth-child(5) {
+		  transition-delay: 0.8s;
+		}
+
+
+		</style>
+	</head>
+	<body>
+
+<div class="loader loader--active">
+    <div class="loader__icon"><svg id="loader-1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+            <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
+            <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"></path>
+            <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
+        </svg></div>
+    <div class="loader__tile"></div>
+    <div class="loader__tile"></div>
+    <div class="loader__tile"></div>
+    <div class="loader__tile"></div>
+    <div class="loader__tile"></div>
+	</div>
+
+<header>
+	<div class="titlearea">
+        <img src="images/title1.png" class="titleimg">
+	</div>
+</header>
+
+ <div id="container">
+	  
+      <div id="content">
+        <iframe id="icontent" name="content" style="width:100%; height:100%; border:none"></iframe>
+      </div>
+	  
+      <div id="worldmap" class="mapping boxes">
+		<div class="maparea">
+		
+		<img src="images/worldmaplm.png" usemap="#image-map" id="map">
+
+	<map name="image-map">
+		<area target="content" href="agra.html" coords="668,175,738,237" shape="rect" onmouseover="writeText('Agra&#44; India')" onmouseout="writeText('Ladies and gentlemen, welcome to...')">
+		<area target="content" href="seoul.html" coords="841,124,909,184" shape="rect" onmouseover="writeText('Seoul&#44; Korea')" onmouseout="writeText('Ladies and gentlemen, welcome to...')">
+		<area target="content" href="giza.html" coords="563,227,494,189" shape="rect" onmouseover="writeText('Giza&#44; Egypt')" onmouseout="writeText('Ladies and gentlemen, welcome to...')">
+		<area target="content" href="rome.html" coords="286,228,354,265" shape="rect" onmouseover="writeText('Rome&#44; Italy')" onmouseout="writeText('Ladies and gentlemen, welcome to...')">
+		<area target="content" href="rio.html" coords="254,319,322,397" shape="rect" onmouseover="writeText('Rio de Janeiro&#44; Brazil')" onmouseout="writeText('Ladies and gentlemen, welcome to...')">
+		<area target="content" href="newyork.html" coords="170,88,212,176" shape="rect" onmouseover="writeText('New York&#44; The United States')" onmouseout="writeText('Ladies and gentlemen, welcome to...')">
+		<area target="content" href="london.html" coords="219,138,280,182" shape="rect" onmouseover="writeText('London&#44; The United Kingdom')" onmouseout="writeText('Ladies and gentlemen, welcome to...')">
+		<area target="content" href="paris.html" coords="286,171,265,222,305,222" shape="poly" onmouseover="writeText('Paris&#44; France')" onmouseout="writeText('Ladies and gentlemen, welcome to...')">
+	</map>
+
+		</div>
+		<div class="gapbox"></div>
+		<div id="landmarkname" class="lmname">
+		<h3 id="location">Ladies and gentlemen, welcome to...</h3>
+		</div>
+      </div>
+	  
+     
+    </div>
+	
+ <footer>
+		<div class="infoarea">
+        <p>&copy; WheretoYR</p>
+		</div>
+      </footer>
+
+	<script>
+	function writeText(txt) {
+	  document.getElementById("location").innerHTML = txt;
+	}
+	</script>
+
+	<script type="text/javascript">
+			var $loader = document.querySelector('.loader')
+
+		window.onload = function() {
+		  $loader.classList.remove('loader--active')
+		};
+
+		document.querySelector('.btn').addEventListener('click', function () {
+		  $loader.classList.add('loader--active')
+		  
+		  window.setTimeout(function () {
+			$loader.classList.remove('loader--active')
+		  }, 5000)
+		})
+		
+	</script>
+
+	</body>
+</html>
